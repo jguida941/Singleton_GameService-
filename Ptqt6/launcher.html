@@ -505,28 +505,18 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             overflow: hidden;
-            opacity: 0;
-            animation: cardAppear 0.6s ease-out forwards;
+            opacity: 1;
+            transform: translateY(0);
             box-shadow: 
                 0 10px 30px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: cardFloat 6s ease-in-out infinite;
         }
         
-        .suite-card:nth-child(1) { animation-delay: 0.1s; }
-        .suite-card:nth-child(2) { animation-delay: 0.2s; }
-        .suite-card:nth-child(3) { animation-delay: 0.3s; }
-        .suite-card:nth-child(4) { animation-delay: 0.4s; }
-        
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+        .suite-card:nth-child(1) { animation-delay: 0s; }
+        .suite-card:nth-child(2) { animation-delay: 0.5s; }
+        .suite-card:nth-child(3) { animation-delay: 1s; }
+        .suite-card:nth-child(4) { animation-delay: 1.5s; }
         
         /* Holographic shimmer effect */
         .suite-card::before {
@@ -567,15 +557,6 @@
             border-color: var(--primary-color);
         }
         
-        /* Floating animation for cards - applied after initial animation */
-        .suite-card.appeared {
-            animation: cardFloat 6s ease-in-out infinite;
-        }
-        
-        .suite-card.appeared:nth-child(1) { animation-delay: 0s; }
-        .suite-card.appeared:nth-child(2) { animation-delay: 1s; }
-        .suite-card.appeared:nth-child(3) { animation-delay: 2s; }
-        .suite-card.appeared:nth-child(4) { animation-delay: 3s; }
         
         @keyframes cardFloat {
             0%, 100% { transform: translateY(0); }
@@ -1001,7 +982,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
+            z-index: 9999;
             opacity: 1;
             transition: opacity 0.5s ease;
         }
@@ -1009,6 +990,7 @@
         .loading-overlay.hidden {
             opacity: 0;
             pointer-events: none;
+            display: none;
         }
         
         .loading-content {
@@ -1606,14 +1588,6 @@
                 window.connectionSystem = new ConnectionSystem();
                 window.themeManager = new ThemeManager();
                 
-                // Add 'appeared' class to cards after initial animation
-                setTimeout(() => {
-                    document.querySelectorAll('.suite-card').forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('appeared');
-                        }, index * 200);
-                    });
-                }, 1000);
                 
                 // Show welcome toast
                 setTimeout(() => {
