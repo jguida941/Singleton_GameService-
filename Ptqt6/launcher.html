@@ -1502,47 +1502,52 @@
         }
         
         // Launch suite function
-        function launchSuite(suiteName) {
+        async function launchSuite(suiteName) {
             // Show loading state
             const btn = event.target;
             const originalText = btn.textContent;
             btn.textContent = 'Launching...';
             btn.disabled = true;
             
-            // Simulate launch process
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.disabled = false;
+            try {
+                // Try to launch via backend
+                const response = await fetch(`http://localhost:8080/launch?app=${suiteName}`);
+                const result = await response.json();
                 
-                switch(suiteName) {
-                    case 'flowchart':
-                        showToast('Launching Animated Flowchart Visualizer...');
-                        // For now, show instructions
-                        showToast('Run: python singleton_flowchart_complete.py', 5000);
-                        break;
-                        
-                    case 'architecture':
-                        showToast('Launching Architecture Explorer...');
-                        // For now, show instructions
-                        showToast('Run: python singleton_flowchart_complete.py', 5000);
-                        break;
-                        
-                    case 'analyzer':
-                        showToast('Launching Code Analyzer...');
-                        // For now, show instructions
-                        showToast('Run: python singleton_visualizer_integrated.py', 5000);
-                        break;
-                        
-                    case 'java':
-                        showToast('Running Java Application...');
-                        // For now, show instructions
-                        showToast('Run: java -jar ../GamingRoom.jar', 5000);
-                        break;
+                if (result.success) {
+                    showToast(`Successfully launched ${suiteName}!`);
+                } else {
+                    showToast(`Failed to launch ${suiteName}. Is the launcher backend running?`, 5000);
                 }
+            } catch (error) {
+                // If backend is not running, show instructions
+                showToast('Backend not running. Starting launcher requires:', 3000);
+                setTimeout(() => {
+                    switch(suiteName) {
+                        case 'flowchart':
+                            showToast('Run: python launcher_backend.py', 5000);
+                            break;
+                        case 'architecture':
+                            showToast('Run: python launcher_backend.py', 5000);
+                            break;
+                        case 'analyzer':
+                            showToast('Run: python launcher_backend.py', 5000);
+                            break;
+                        case 'java':
+                            showToast('Run: python launcher_backend.py', 5000);
+                            break;
+                    }
+                }, 3500);
+            } finally {
+                // Reset button
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 1000);
                 
                 // Update system monitor
                 updateSystemMonitor(suiteName);
-            }, 1000);
+            }
         }
         
         // System monitor updates

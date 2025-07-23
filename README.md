@@ -144,10 +144,16 @@ To run the visualizers:
 # Install PyQt6
 pip install PyQt6
 
-# Launch the HTML interface (recommended)
+# Method 1: Launch with backend (all buttons work!)
+cd Ptqt6
+python launcher_backend.py
+# OR
+./start_launcher.sh
+
+# Method 2: Open HTML only (visual interface only)
 open Ptqt6/launcher.html
 
-# Or run individual visualizers:
+# Method 3: Run individual visualizers manually
 python Ptqt6/singleton_flowchart_complete.py
 python Ptqt6/need_fix_animations.py
 ```
