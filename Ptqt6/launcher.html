@@ -1240,6 +1240,12 @@
                     View on GitHub
                 </a>
             </p>
+            <!-- Server Status Indicator -->
+            <div id="serverIndicator" style="margin-top: 2rem; display: none;">
+                <div class="status-beacon" style="display: inline-block;">
+                    <span id="serverStatus">🔍 Checking server...</span>
+                </div>
+            </div>
         </div>
 
         <div class="grid-wrapper">
@@ -1506,7 +1512,7 @@
             // Show loading state
             const btn = event.target;
             const originalText = btn.textContent;
-            btn.textContent = 'Launching...';
+            btn.textContent = 'Checking...';
             btn.disabled = true;
             
             try {
@@ -1520,24 +1526,11 @@
                     showToast(`Failed to launch ${suiteName}. Is the launcher backend running?`, 5000);
                 }
             } catch (error) {
-                // If backend is not running, show instructions
-                showToast('Backend not running. Starting launcher requires:', 3000);
+                // If backend is not running, show simple instruction
+                showToast('🚀 To enable launch buttons, run: python start_visualizer.py', 6000);
                 setTimeout(() => {
-                    switch(suiteName) {
-                        case 'flowchart':
-                            showToast('Run: python launcher_backend.py', 5000);
-                            break;
-                        case 'architecture':
-                            showToast('Run: python launcher_backend.py', 5000);
-                            break;
-                        case 'analyzer':
-                            showToast('Run: python launcher_backend.py', 5000);
-                            break;
-                        case 'java':
-                            showToast('Run: python launcher_backend.py', 5000);
-                            break;
-                    }
-                }, 3500);
+                    showToast('This will start the backend and open this page with working buttons!', 6000);
+                }, 1500);
             } finally {
                 // Reset button
                 setTimeout(() => {
@@ -1632,6 +1625,51 @@
         // Add resize handler for responsive updates
         window.addEventListener('resize', requestTick);
         window.addEventListener('scroll', requestTick);
+        
+        // Server management
+        let serverRunning = false;
+        
+        async function checkServerStatus() {
+            try {
+                const response = await fetch('http://localhost:8080/launch?app=status', {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                return response.ok;
+            } catch (error) {
+                return false;
+            }
+        }
+        
+        async function updateServerStatus() {
+            const isRunning = await checkServerStatus();
+            const indicator = document.getElementById('serverIndicator');
+            const status = document.getElementById('serverStatus');
+            
+            serverRunning = isRunning;
+            
+            if (isRunning) {
+                indicator.style.display = 'block';
+                status.textContent = '✅ Backend Connected - All Systems Go!';
+                status.style.color = '#00ff00';
+                
+                // Enable all launch buttons visually
+                document.querySelectorAll('.launch-btn').forEach(btn => {
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                });
+            } else {
+                indicator.style.display = 'none';
+                // Buttons still work but show different message
+            }
+        }
+        
+        // Check server status periodically
+        setInterval(updateServerStatus, 2000);
+        
+        // Initial check after a short delay
+        setTimeout(updateServerStatus, 500);
     </script>
 </body>
 </html>

@@ -102,13 +102,14 @@ Singleton_GameService/
 │   ├── ProgramDriver.java   # Main driver class
 │   ├── SingletonTester.java # Tests singleton behavior
 │   └── Team.java            # Team class extending Entity
-├── Ptqt6/                   # PyQt6 visualizers (integration in progress)
-│   ├── launcher.html                    # Advanced HTML launcher with themes
-│   ├── singleton_flowchart_complete.py  # Complete architecture visualizer
-│   ├── need_fix_animations.py           # Animated singleton flow
-│   ├── singleton_visualizer_integrated.py # Multi-tab interface
-│   ├── working_code_viz.py              # Alternative visualizer
-│   └── README_SINGLETON_VISUALIZER.md   # PyQt6 documentation
+├── Ptqt6/                   # PyQt6 visualizers and launchers
+│   ├── start_visualizer.py              # 🚀 ONE-CLICK LAUNCHER (START HERE!)
+│   ├── RUN_VISUALIZER.command           # macOS double-click launcher
+│   ├── launcher.html                    # Advanced HTML interface
+│   ├── launcher_backend.py              # Backend server for HTML
+│   ├── singleton_flowchart_complete.py  # Architecture visualizer
+│   ├── singleton_visualizer_integrated.py # Code analyzer
+│   └── README_SINGLETON_VISUALIZER.md   # Detailed documentation
 ├── bin/                     # Compiled .class files
 ├── manifest.txt             # Defines main class
 ├── GamingRoom.jar           # Final runnable JAR
@@ -121,42 +122,71 @@ Singleton_GameService/
 
 ---
 
-### Interactive Visualizers (PyQt6)
+### 🎨 Interactive Visualizers Suite (PyQt6)
 
-This project includes interactive Python visualizers to help understand the Singleton pattern and Entity hierarchy:
+This project includes a comprehensive suite of interactive visualizers to help understand the Singleton pattern:
 
-1. **Complete Architecture Visualizer** (`Ptqt6/singleton_flowchart_complete.py`)
-   - Shows the entire system architecture with Entity hierarchy
-   - Three animation modes: Full flow, Singleton only, Entity hierarchy only
-   - Interactive controls with speed adjustment
+#### 🚀 Quick Start - One Command!
 
-2. **Animated Singleton Flow** (`Ptqt6/need_fix_animations.py`)
-   - Step-by-step animation of singleton creation
-   - Visual flow indicators showing data movement
-
-3. **Integrated Multi-tab Interface** (`Ptqt6/singleton_visualizer_integrated.py`)
-   - Browse Java source code
-   - View flowcharts and explanations
-   - Educational tool for understanding patterns
-
-To run the visualizers:
 ```bash
-# Install PyQt6
+# Install PyQt6 (one-time setup)
 pip install PyQt6
 
-# Method 1: Launch with backend (all buttons work!)
+# Run the complete visualizer suite with one command!
 cd Ptqt6
-python launcher_backend.py
-# OR
-./start_launcher.sh
-
-# Method 2: Open HTML only (visual interface only)
-open Ptqt6/launcher.html
-
-# Method 3: Run individual visualizers manually
-python Ptqt6/singleton_flowchart_complete.py
-python Ptqt6/need_fix_animations.py
+python start_visualizer.py
 ```
+
+This launches:
+- ✅ Backend server automatically
+- ✅ Beautiful HTML interface in your browser
+- ✅ All launch buttons working instantly
+- ✅ No manual server setup needed!
+
+#### Alternative Launch Methods
+
+**For macOS Users:**
+```bash
+# Double-click method
+open Ptqt6/RUN_VISUALIZER.command
+# Or in Finder, just double-click RUN_VISUALIZER.command
+```
+
+**Manual Methods:**
+```bash
+# Method 1: Simple Python GUI launcher
+python Ptqt6/launcher.py
+
+# Method 2: Backend + HTML (two steps)
+python Ptqt6/launcher_backend.py
+# Then open http://localhost:8080/launcher.html
+
+# Method 3: Direct execution
+python Ptqt6/singleton_flowchart_complete.py
+python Ptqt6/singleton_visualizer_integrated.py
+```
+
+#### 📚 What's Included
+
+1. **Animated Flowchart Visualizer**
+   - Step-by-step singleton pattern animation
+   - Interactive speed controls
+   - Visual representation of getInstance() flow
+
+2. **Architecture Explorer**
+   - Complete Entity hierarchy visualization
+   - GameService architecture overview
+   - Three animation modes: Full, Singleton-only, Entity-only
+
+3. **Code Analyzer**
+   - Line-by-line Java code analysis
+   - Pattern detection and explanation
+   - Memory management visualization
+
+4. **Java Runtime**
+   - Launches the actual Java application
+   - Shows singleton verification via hashcodes
+   - Opens in terminal for clear output
 
 **TODO List:**
 - Add zoom functionality to flowchart visualizers
