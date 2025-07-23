@@ -1,19 +1,37 @@
 # Singleton Pattern Visualizer
 
-This application provides an interactive visualization of the Singleton design pattern implementation in Java. It's designed as an educational tool for students to understand how the Singleton pattern works, with a focus on the GameService implementation.
+This application provides multiple interactive visualizations of the Singleton design pattern implementation in Java, with a focus on the GameService and Entity hierarchy. It's designed as an educational tool for students to understand how design patterns work together.
 
-## Features
+## Available Visualizations
 
-1. **Interactive Flowchart**: Visual representation of the Singleton pattern flow
-2. **Code Viewer**: Browse through the actual Java code implementing the pattern
-3. **Explanation Tab**: Detailed explanation of the Singleton pattern concepts
+### 1. Complete Architecture Visualizer (`singleton_flowchart_complete.py`)
+- **Full program flow** with Entity hierarchy and Singleton pattern
+- **Three animation modes**: Full flow, Singleton only, Entity hierarchy only
+- **Interactive controls**: Play, step-through, speed control, and loop
+- Shows relationships between Entity, Game, Team, and Player classes
+- Demonstrates how GameService manages all instances with unique IDs
+
+### 2. Animated Flowchart (`need_fix_animations.py`)
+- **Fixed animation system** using QTimer instead of QPropertyAnimation
+- Step-by-step visualization of singleton creation and verification
+- Visual flow indicators showing data movement
+
+### 3. Integrated Visualizer (`singleton_visualizer_integrated.py`)
+- **Multi-tab interface**: Flowchart, Code Viewer, and Explanation tabs
+- **Code browser**: View actual Java source files
+- **Educational explanations**: Detailed pattern descriptions
+
+### 4. Working Code Visualizer (`working_code_viz.py`)
+- Alternative implementation with stable animations
+- Focus on code structure visualization
 
 ## Key Concepts Visualized
 
-- Private constructor preventing external instantiation
-- Static instance variable holding the single instance
-- Public static getInstance() method for controlled access
-- HashCode verification proving singleton behavior
+- **Entity Inheritance**: Abstract base class for Game, Team, and Player
+- **Singleton Pattern**: GameService as the single instance manager
+- **ID Management**: Centralized unique ID generation
+- **Collection Management**: Lists of games, teams, and players
+- **Pattern Verification**: How SingletonTester proves the pattern works
 
 ## Requirements
 
@@ -27,45 +45,82 @@ This application provides an interactive visualization of the Singleton design p
 pip install PyQt6
 ```
 
-2. Run the application:
+2. Run the visualizers:
 ```bash
-python singleton_visualizer.py
+# For the complete architecture view:
+python singleton_flowchart_complete.py
+
+# For the animated singleton flow:
+python need_fix_animations.py
+
+# For the integrated multi-tab view:
+python singleton_visualizer_integrated.py
+
+# For the working code visualizer:
+python working_code_viz.py
 ```
 
-## Understanding the Visualizer
+## Understanding the Architecture
 
-### Flowchart Tab
-The flowchart shows two parallel processes:
-- Left side: How the GameService singleton is created and accessed
-- Right side: How the SingletonTester verifies that only one instance exists
+### Complete Flow
+The complete architecture visualizer shows:
+- **Entity Hierarchy** (left): Base Entity class and its subclasses
+- **Main Flow** (center): Program execution and singleton creation
+- **Operations** (right): How games, teams, and players are managed
+- **Verification** (bottom): SingletonTester proving the pattern works
 
-### Code Viewer Tab
-View the actual Java code for:
-- GameService: The singleton implementation
-- SingletonTester: Code that verifies the singleton behavior
-- ProgramDriver: The main application entry point
-- Game: A class managed by the GameService
+### Animation Modes
+1. **Full Program Flow**: Shows entire system from Entity classes to singleton verification
+2. **Singleton Pattern Only**: Focuses on getInstance() and instance management
+3. **Entity Hierarchy Only**: Shows how Game, Team, and Player inherit from Entity
 
-### Explanation Tab
-Provides a detailed explanation of:
-- What the Singleton pattern is
-- Key components of the pattern
-- Benefits of using Singleton
-- How hashCode() verifies the singleton behavior
+### Code Structure
+```
+Entity (Abstract)
+├── Game (contains List<Team>)
+├── Team (contains List<Player>)
+└── Player
 
-## How the Singleton Pattern Works
+GameService (Singleton)
+├── games: List<Game>
+├── gameId, teamId, playerId (counters)
+└── getInstance() method
+```
 
-1. The application starts in ProgramDriver.main()
-2. GameService.getInstance() is called
-3. If instance == null, a new GameService is created
-4. If instance != null, the existing instance is returned
-5. SingletonTester gets two references to the singleton
-6. Both references have the same hashcode, proving they point to the same object in memory
+## How the Complete System Works
+
+1. **Entity Base Class**: Provides id and name fields for all game objects
+2. **GameService Singleton**: 
+   - Controls creation of all game objects
+   - Manages unique ID generation
+   - Stores all games in a central list
+3. **Object Creation Flow**:
+   - addGame() checks for duplicates, creates with unique ID
+   - Game.addTeam() uses GameService for team IDs
+   - Team.addPlayer() uses GameService for player IDs
+4. **Verification**: SingletonTester proves only one GameService exists
+
+## Animation Controls
+
+- **Play Animation**: Runs the complete sequence automatically
+- **Next Step**: Manual step-through for detailed study
+- **Speed Slider**: Control animation speed (1-10)
+- **Loop**: Continuously repeat the animation
+- **Mode Selector**: Choose which aspect to focus on
 
 ## Educational Value
 
-This visualizer helps students understand:
-- How the Singleton pattern is implemented in Java
-- Why the pattern is useful for centralized resource management
-- How to verify that a singleton is working correctly
-- The role of hashCode() in object identity verification 
+These visualizers help students understand:
+- **Design Pattern Integration**: How Singleton and inheritance work together
+- **Object Relationships**: Visual representation of class hierarchies
+- **ID Management**: Why centralized ID generation prevents conflicts
+- **Pattern Verification**: How to test that patterns work correctly
+- **Real-world Application**: GameService as a practical example
+
+## Troubleshooting
+
+If animations aren't working:
+1. Ensure PyQt6 is properly installed
+2. Check Python version (3.6+ required)
+3. Try the alternative visualizers if one has issues
+4. The `need_fix_animations.py` file has been updated to fix QPropertyAnimation errors 

@@ -1,5 +1,4 @@
 # Singleton_GameService
-#I Did more then expected and added some features of my own ive decided im gonna focus on the the single and the rest of the patters to expand mya architecure an desugn kniwkedgge, nit I dont have the words for it yet,
 
 - A basic Java project demonstrating the Singleton design pattern. 
 - This is a simple command-line app that initializes game data and verifies singleton behavior in `GameService`.
@@ -103,6 +102,12 @@ Singleton_GameService/
 │   ├── ProgramDriver.java   # Main driver class
 │   ├── SingletonTester.java # Tests singleton behavior
 │   └── Team.java            # Team class extending Entity
+├── Ptqt6/                   # PyQt6 visualizers
+│   ├── singleton_flowchart_complete.py  # Complete architecture visualizer
+│   ├── need_fix_animations.py           # Animated singleton flow
+│   ├── singleton_visualizer_integrated.py # Multi-tab interface
+│   ├── working_code_viz.py              # Alternative visualizer
+│   └── README_SINGLETON_VISUALIZER.md   # PyQt6 documentation
 ├── bin/                     # Compiled .class files
 ├── manifest.txt             # Defines main class
 ├── GamingRoom.jar           # Final runnable JAR
@@ -115,7 +120,38 @@ Singleton_GameService/
 
 ---
 
-### How to Run
+### Interactive Visualizers (PyQt6)
+
+This project includes interactive Python visualizers to help understand the Singleton pattern and Entity hierarchy:
+
+1. **Complete Architecture Visualizer** (`Ptqt6/singleton_flowchart_complete.py`)
+   - Shows the entire system architecture with Entity hierarchy
+   - Three animation modes: Full flow, Singleton only, Entity hierarchy only
+   - Interactive controls with speed adjustment
+
+2. **Animated Singleton Flow** (`Ptqt6/need_fix_animations.py`)
+   - Step-by-step animation of singleton creation
+   - Visual flow indicators showing data movement
+
+3. **Integrated Multi-tab Interface** (`Ptqt6/singleton_visualizer_integrated.py`)
+   - Browse Java source code
+   - View flowcharts and explanations
+   - Educational tool for understanding patterns
+
+To run the visualizers:
+```bash
+# Install PyQt6
+pip install PyQt6
+
+# Run the complete architecture visualizer
+python Ptqt6/singleton_flowchart_complete.py
+```
+
+See `Ptqt6/README_SINGLETON_VISUALIZER.md` for detailed documentation.
+
+---
+
+### How to Run the Java Application
 
 If you downloaded the compiled `GamingRoom.jar`:
 

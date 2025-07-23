@@ -36,4 +36,11 @@ replay_pid*
 .DS_Store
 
 # Keep the JAR file
-!GamingRoom.jar 
+!GamingRoom.jar
+
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python 
