@@ -69,9 +69,21 @@ class LauncherHandler(SimpleHTTPRequestHandler):
                 return True
                 
             elif app_name == 'java':
-                # Launch Java application
+                # Launch Java application in terminal
                 jar_path = os.path.join(parent_dir, 'GamingRoom.jar')
-                subprocess.Popen(['java', '-jar', jar_path])
+                if sys.platform == 'darwin':  # macOS
+                    # Open in Terminal app
+                    apple_script = f'''
+                    tell application "Terminal"
+                        activate
+                        do script "cd '{parent_dir}' && java -jar GamingRoom.jar; echo; echo 'Press any key to close...'; read -n 1"
+                    end tell
+                    '''
+                    subprocess.Popen(['osascript', '-e', apple_script])
+                elif sys.platform == 'win32':  # Windows
+                    subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'java', '-jar', jar_path])
+                else:  # Linux
+                    subprocess.Popen(['gnome-terminal', '--', 'java', '-jar', jar_path])
                 return True
                 
             else:
