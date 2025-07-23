@@ -53,7 +53,7 @@ service1 and service2 point to the same instance? true
 ```
 
 ## Memory Management
-<img width="506" height="280" alt="Screenshot 2025-07-13 at 7 41 31 AM" src="https://github.com/user-attachments/assets/ff7615c1-7c4b-4d48-9b9d-45b775c9f63b" />
+![Memory Management Diagram](https://github.com/user-attachments/assets/ff7615c1-7c4b-4d48-9b9d-45b775c9f63b)
 
 ## Software Engineering Principles
 
@@ -102,7 +102,8 @@ Singleton_GameService/
 │   ├── ProgramDriver.java   # Main driver class
 │   ├── SingletonTester.java # Tests singleton behavior
 │   └── Team.java            # Team class extending Entity
-├── Ptqt6/                   # PyQt6 visualizers
+├── Ptqt6/                   # PyQt6 visualizers (integration in progress)
+│   ├── launcher.html                    # Advanced HTML launcher with themes
 │   ├── singleton_flowchart_complete.py  # Complete architecture visualizer
 │   ├── need_fix_animations.py           # Animated singleton flow
 │   ├── singleton_visualizer_integrated.py # Multi-tab interface
@@ -143,9 +144,19 @@ To run the visualizers:
 # Install PyQt6
 pip install PyQt6
 
-# Run the complete architecture visualizer
+# Launch the HTML interface (recommended)
+open Ptqt6/launcher.html
+
+# Or run individual visualizers:
 python Ptqt6/singleton_flowchart_complete.py
+python Ptqt6/need_fix_animations.py
 ```
+
+**TODO List:**
+- Add zoom functionality to flowchart visualizers
+- Fix code analyzer to provide line-by-line explanations
+- Complete integration of all visualizers into unified launcher
+- Update PyQt6 documentation
 
 See `Ptqt6/README_SINGLETON_VISUALIZER.md` for detailed documentation.
 
@@ -153,16 +164,14 @@ See `Ptqt6/README_SINGLETON_VISUALIZER.md` for detailed documentation.
 
 ### How to Run the Java Application
 
-If you downloaded the compiled `GamingRoom.jar`:
+The compiled JAR file has been tested and runs correctly.
 
- **Run it from the terminal:**
-
+**Run from project directory:**
 ```bash
 java -jar GamingRoom.jar
 ```
 
-**Or, if downloaded from GitHub:**
-
+**Or from Downloads folder:**
 ```bash
 java -jar ~/Downloads/GamingRoom.jar
 ```
@@ -213,11 +222,11 @@ The Singleton pattern is widely used in:
 
 ---
 
-##  License
-#STILL A WORK IN PROGRESS
-**Educational Use Only**
-– Created as a school project for CS 230 at SNHU.
+## License
 
-- This education and I dont need donwloads for forks at at this time.
+**Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
+
+This project is for educational use only, created as a school project for CS 230 at SNHU.
+
 Copyright © 2025 Justin Guida
 

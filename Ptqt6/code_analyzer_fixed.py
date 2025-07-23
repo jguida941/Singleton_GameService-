@@ -475,7 +475,7 @@ class CodeAnalyzerWidget(QWidget):
                 self.current_line_text.setPlainText(line_content)
                 
                 # Check if we have analysis for this line
-                if self.current_file in self.code_analysis:
+                if hasattr(self, 'code_analysis') and self.current_file in self.code_analysis:
                     file_analysis = self.code_analysis[self.current_file]
                     if line_num in file_analysis:
                         analysis = file_analysis[line_num]

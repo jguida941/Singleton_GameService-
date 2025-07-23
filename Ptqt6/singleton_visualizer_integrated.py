@@ -23,8 +23,8 @@ from PyQt6.QtCore import Qt, QTimer
 
 # Import fixed components
 from code_analyzer_fixed import CodeAnalyzerWidget
-from animated_flowchart_fixed import AnimatedFlowchartWidget
-from singleton_visualizer_pro import (MemoryVisualizerWidget, AnimatedUMLClassNode,
+from need_fix_animations import AnimatedFlowchartWidget
+from working_code_viz import (MemoryVisualizerWidget, AnimatedUMLClassNode,
                                     ClassInfo, AnimatedArrow)
 from PyQt6.QtWidgets import (QGraphicsScene, QGraphicsView, QPushButton, 
                            QHBoxLayout, QTextBrowser, QLabel)

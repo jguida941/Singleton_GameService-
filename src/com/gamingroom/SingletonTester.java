@@ -16,17 +16,9 @@ public class SingletonTester {
 	
 
 		//FIXED: Local referance to the singleton instance
-		GameService service1 = GameService.getInstance();
-		GameService service2 = GameService.getInstance();
-
-		//FIXED: Shows that both referancs point to same object in memory
-		System.out.println("service1 hashcode: " + service1.hashCode());
-		System.out.println("service2 hashcode: " + service2.hashCode());
-		System.out.println("service1 and service2 point to the same instance? " + (service1 == service2));
-		
-		
-		//FIXED: THis is a clean print using just one referance 
-	
-		System.out.println("service (via service1) hashcode: " + service1.hashCode());
-	}
+		GameService service = GameService.getInstance();
+		// Display the result this should be the same instance
+        System.out.println("Testing singleton instance again: " + service);
+		System.out.println("GameService instance hash: " + System.identityHashCode(service));
+    }
 }
