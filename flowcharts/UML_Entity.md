@@ -1,6 +1,7 @@
 # Singleton GameService UML Diagram
 
 This UML diagram illustrates the structure and relationships of the Singleton GameService implementation.
+**TODO: Fix text fititng properly into boxes**
 
 ```mermaid
 classDiagram
