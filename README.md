@@ -14,8 +14,6 @@
 
 ## Project Summary
 
-This project was created for **CS 230** as a milestone assignment.
-
 It showcases:
 - **The Singleton Pattern in Java**
 - **Object-oriented design (`Game`, `Player`, `Team`)**
