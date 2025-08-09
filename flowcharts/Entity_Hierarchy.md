@@ -1,4 +1,5 @@
 # Updated UML Diagram - Singleton GameService with Entity Hierarchy
+**TODO: Fix text not fitting in box**
 
 ```mermaid
 classDiagram
