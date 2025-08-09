@@ -1,7 +1,16 @@
 # Singleton_GameService
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-ff6a00?style=flat-square&labelColor=0a0a0a)](LICENSE)
+![Language](https://img.shields.io/badge/Java-8%2B-ff6a00?style=flat-square&labelColor=0a0a0a)
+![Pattern](https://img.shields.io/badge/Pattern-Singleton-ff6a00?style=flat-square&labelColor=0a0a0a)
+![Type](https://img.shields.io/badge/App-Command--line-ff6a00?style=flat-square&labelColor=0a0a0a)
+![Build](https://img.shields.io/badge/Build-javac-ff6a00?style=flat-square&labelColor=0a0a0a)
+![Artifact](https://img.shields.io/badge/JAR-Executable-ff6a00?style=flat-square&labelColor=0a0a0a)
+![UML](https://img.shields.io/badge/UML-Included-ff6a00?style=flat-square&labelColor=0a0a0a)
+![Extras](https://img.shields.io/badge/Extras-PyQt6%20%7C%20Jupyter-ff6a00?style=flat-square&labelColor=0a0a0a)
 
 - A basic Java project demonstrating the Singleton design pattern. 
 - This is a simple command-line app that initializes game data and verifies singleton behavior in `GameService`.
+- Note: This contains additional PyQt6/Jupiter Notebooks components; this release is for hashcode-based singleton checks.
 
 ## Project Summary
 
@@ -91,6 +100,7 @@ I enhanced the original codebase by:
 ---
 
 ### Project Structure
+**Note I have many PyQt/Jupiter Notebooks I am working on in this version feel free to ignore or run them. Need to update file tree completly
 
 ```
 Singleton_GameService/
@@ -103,7 +113,7 @@ Singleton_GameService/
 │   ├── SingletonTester.java # Tests singleton behavior
 │   └── Team.java            # Team class extending Entity
 ├── Ptqt6/                   # PyQt6 visualizers and launchers
-│   ├── start_visualizer.py              # 🚀 ONE-CLICK LAUNCHER (START HERE!)
+│   ├── start_visualizer.py              # ONE-CLICK LAUNCHER (START HERE!)
 │   ├── RUN_VISUALIZER.command           # macOS double-click launcher
 │   ├── launcher.html                    # Advanced HTML interface
 │   ├── launcher_backend.py              # Backend server for HTML
@@ -122,11 +132,11 @@ Singleton_GameService/
 
 ---
 
-### 🎨 Interactive Visualizers Suite (PyQt6)
+### Interactive Visualizers Suite (PyQt6)
 
 This project includes a comprehensive suite of interactive visualizers to help understand the Singleton pattern:
 
-#### 🚀 Quick Start - One Command!
+#### Quick Start - One Command!
 
 ```bash
 # Install PyQt6 (one-time setup)
@@ -138,10 +148,10 @@ python start_visualizer.py
 ```
 
 This launches:
-- ✅ Backend server automatically
-- ✅ Beautiful HTML interface in your browser
-- ✅ All launch buttons working instantly
-- ✅ No manual server setup needed!
+-  Backend server automatically
+- Beautiful HTML interface in your browser
+- All launch buttons working instantly
+- No manual server setup needed!
 
 #### Alternative Launch Methods
 
@@ -166,7 +176,7 @@ python Ptqt6/singleton_flowchart_complete.py
 python Ptqt6/singleton_visualizer_integrated.py
 ```
 
-#### 📚 What's Included
+#### What's Included
 
 1. **Animated Flowchart Visualizer**
    - Step-by-step singleton pattern animation
@@ -256,7 +266,7 @@ The Singleton pattern is widely used in:
 - Cache implementations
 - Thread pools
 
----
+
 
 ## License
 
